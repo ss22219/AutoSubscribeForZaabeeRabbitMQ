@@ -3,3 +3,12 @@
 ################################################################################
 
 /.vs
+/AutoSubscribe/bin/Debug/netcoreapp2.1
+/AutoSubscribe/obj/Debug/netcoreapp2.1/AutoSubscribe.AssemblyInfo.cs
+/AutoSubscribe/obj/Debug/netcoreapp2.1
+/AutoSubscribe/obj/Release/netcoreapp2.1
+/Zaabee.RabbitMQ
+/AutoSubscribe/obj/AutoSubscribe.csproj.nuget.g.targets
+/AutoSubscribe/obj/AutoSubscribe.csproj.nuget.g.props
+/AutoSubscribe/obj/AutoSubscribe.csproj.nuget.cache
+/AutoSubscribe/obj/project.assets.json
