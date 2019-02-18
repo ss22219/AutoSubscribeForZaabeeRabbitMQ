@@ -70,7 +70,7 @@ namespace AutoSubscribe
         }
 
         /// <summary>
-        /// 
+        ///  Generate Action<T>
         /// </summary>
         /// <param name="instance"></param>
         /// <param name="handleMethod"></param>
