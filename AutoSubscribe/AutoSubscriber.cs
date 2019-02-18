@@ -77,13 +77,13 @@ namespace AutoSubscribe
         /// <returns></returns>
         private object GenerateHandleAction(object instance, MethodInfo handleMethod)
         {
-            var GenerateLambdaMethod = typeof(Expression).GetMethods().Where(m => m.Name == "Lambda" && m.IsGenericMethod).First().MakeGenericMethod(new Type[] { Expression.GetActionType(new Type[] { handleMethod.GetParameters()[0].ParameterType }) });
+            var generateLambdaMethod = typeof(Expression).GetMethods().Where(m => m.Name == "Lambda" && m.IsGenericMethod).First().MakeGenericMethod(new Type[] { Expression.GetActionType(new Type[] { handleMethod.GetParameters()[0].ParameterType }) });
 
             var paramExpression = Expression.Parameter(handleMethod.GetParameters()[0].ParameterType);
             var callExpression = Expression.Call(Expression.Constant(instance), handleMethod, new Expression[] { paramExpression });
 
             // Expression<Action<T>> lambdaExpression = arg => Handle(arg)
-            var lambdaExpression = GenerateLambdaMethod.Invoke(null, new object[] { callExpression, new ParameterExpression[]{ paramExpression } });
+            var lambdaExpression = generateLambdaMethod.Invoke(null, new object[] { callExpression, new ParameterExpression[]{ paramExpression } });
 
             //Compile to Action<T>
             return lambdaExpression.GetType().GetMethods().Where(m => m.Name == "Compile" && m.ReturnType != typeof(Delegate) && m.GetParameters().Length == 0).First().Invoke(lambdaExpression, new object[] { });
